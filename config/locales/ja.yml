@@ -13,8 +13,8 @@ ja:
   # Active Recordモデルのバリデーションエラーメッセージの翻訳を定義
   errors:
     # バリデーションエラーのエラー文の翻訳を定義（バリデーションエラーメッセージの名前はすでに決まっている）
+    format: "%{attribute}%{message}"
     messages:
-      format: "%{attribute}%{message}"
       blank: を入力してください
   notice:
     successful: タスクを%{action}しました
