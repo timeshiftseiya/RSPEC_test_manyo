@@ -14,6 +14,7 @@ ja:
   errors:
     # バリデーションエラーのエラー文の翻訳を定義（バリデーションエラーメッセージの名前はすでに決まっている）
     messages:
+      format: "%{attribute}%{message}"
       blank: を入力してください
   notice:
     successful: タスクを%{action}しました
