@@ -17,6 +17,21 @@
   <%= @task.created_at %>
 </p>
 
+<p>
+  <strong><%= Task.human_attribute_name(:deadline_on) %>:</strong>
+  <%= @task.created_at %>
+</p>
+
+<p>
+  <strong><%= Task.human_attribute_name(:priority) %>:</strong>
+  <%= @task.created_at %>
+</p>
+
+<p>
+  <strong><%= Task.human_attribute_name(:status) %>:</strong>
+  <%= @task.created_at %>
+</p>
+
 
 <%= link_to t('common.edit'), edit_task_path(@task), id:"edit-task" %> |
 <%= link_to t('common.back'), tasks_path, id:"back" %>

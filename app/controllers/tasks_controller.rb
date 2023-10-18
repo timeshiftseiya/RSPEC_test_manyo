@@ -3,7 +3,33 @@ class TasksController < ApplicationController
 
   # GET /tasks or /tasks.json
   def index
-    @tasks = Task.all.order(created_at: "DESC").page(params[:page])
+    # 作成日の降順で全件表示
+    @tasks = Task.old_created.page(params[:page])
+
+    # 終了期限でのソートが実行された場合、終了期限の昇順で全件表示
+    if params[:sort_deadline_on]
+      @tasks = Task.near_deadline.page(params[:page])
+    # 優先度でのソートが実行された場合、優先度の降順で全件表示
+    elsif params[:sort_priority]
+      @tasks = Task.high_priority.page(params[:page])     
+    end
+
+    # 「検索」が実行された場合の表示
+    if params[:search].present?
+      # 検索パラメータにタイトルとステータスの両方があった場合
+      if params[:search][:title].present?&&params[:search][:status].present?
+        @tasks = Task.search_title_status(params[:search]).page(params[:page])
+      # 検索パラメータにタイトルのみがあった場合
+      elsif params[:search][:title].present?
+        @tasks = Task.search_title(params[:search][:title]).page(params[:page])
+      # 検索パラメータにステータスのみがあった場合
+      elsif params[:search][:status].present?
+        @tasks = Task.search_status(params[:search][:status]).page(params[:page])
+      # 検索パラメータに値がない場合
+      else
+        @tasks = Task.old_created.page(params[:page])
+      end
+    end
   end
 
   # GET /tasks/1 or /tasks/1.json
@@ -64,6 +90,6 @@ class TasksController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def task_params
-      params.require(:task).permit(:title, :content)
+      params.require(:task).permit(:title, :content, :deadline_on, :priority, :status)
     end
 end

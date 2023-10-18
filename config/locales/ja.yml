@@ -10,6 +10,9 @@ ja:
         title: タイトル
         content: 内容
         created_at: 作成日時
+        deadline_on: 終了期限
+        priority: 優先度
+        status: ステータス
   # Active Recordモデルのバリデーションエラーメッセージの翻訳を定義
   errors:
     # バリデーションエラーのエラー文の翻訳を定義（バリデーションエラーメッセージの名前はすでに決まっている）
