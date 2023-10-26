@@ -13,22 +13,44 @@ ja:
         deadline_on: 終了期限
         priority: 優先度
         status: ステータス
+      user:
+        name: 名前
+        email: メールアドレス
+        password: パスワード
+        password_confirmation: パスワード（確認）
+        admin: 管理者権限
   # Active Recordモデルのバリデーションエラーメッセージの翻訳を定義
   errors:
     # バリデーションエラーのエラー文の翻訳を定義（バリデーションエラーメッセージの名前はすでに決まっている）
     format: "%{attribute}%{message}"
     messages:
       blank: を入力してください
+      taken: はすでに使用されています
+      too_short: は6文字以上で入力してください
+      confirmation: と%{attribute}の入力が一致しません
   notice:
-    successful: タスクを%{action}しました
+    successful_task: タスクを%{action}しました
+    successful_user: アカウントを%{action}しました
+    fail_login: メールアドレスまたはパスワードに誤りがあります
   common:
     index: タスク一覧
     new: タスクを登録する
     show: 詳細
     edit: 編集
+    sign-up: アカウント登録
+    account-setting: アカウント設定
+    sign-in: ログイン
+    sign-out: ログアウト
+    user_index: ユーザー一覧
+    add-user: ユーザーを登録する
     destroy: 削除
     back: 戻る
     confirm_destroy: 本当に削除してもよろしいですか？
+    notice_login: ログインしてください
+    notice_logout: ログアウトしてください
+    notice_admin_needs: 管理者以外アクセスできません
+    notice_prohibit_delete: 管理者が0人になるため削除できません
+    notice_prohibit_update: 管理者が0人になるため権限を変更できません
   helpers:
     submit:
       create: 登録する
@@ -42,4 +64,31 @@ ja:
       title: タスク詳細ページ
     edit:
       title: タスク編集ページ
+  users:
+    new:
+      title: アカウント登録ページ
+    show:
+      title: アカウント詳細ページ
+    edit:
+      title: アカウント編集ページ
+  sessions:
+    new:
+      title: ログインページ
+    create:
+      fail: メールアドレスまたはパスワードに誤りがあります
+      success: ログインしました
+    destroy:
+      logout: ログアウトしました
+  admin:
+    users:
+      index:
+        title: ユーザー一覧ページ
+      new:
+        title: ユーザー登録ページ
+      show:
+        title: ユーザー詳細ページ
+      edit:
+        title: ユーザー編集ページ
+
+    
 

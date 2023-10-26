@@ -1,0 +1,16 @@
+<h1><%= t('.title') %></h1>
+
+<p>
+  <strong><%= t('activerecord.attributes.user.name') %>:</strong>
+  <%= @user.name %>
+</p>
+
+
+<p>
+  <strong><%= t('activerecord.attributes.user.email') %>:</strong>
+  <%= @user.email %>
+</p>
+
+
+<%= link_to t('common.edit'), edit_user_path, id:"edit-user" %> | 
+<td><%= link_to t('common.destroy'), @user, id:"destroy-user", method: :delete, data: { confirm: t('common.confirm_destroy') } %></td>

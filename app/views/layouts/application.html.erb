@@ -11,12 +11,24 @@
 
   <nav>
     <ul>
-      <li><%= link_to t('common.index'), tasks_path, id:"tasks-index" %></li>
-      <li><%= link_to t('common.new'), new_task_path, id:"new-task" %></li>
+      <% if logged_in? %>
+        <li><%= link_to t('common.index'), tasks_path, id:"tasks-index" %></li>
+        <li><%= link_to t('common.new'), new_task_path, id:"new-task" %></li>
+        <li><%= link_to t('common.account-setting'), user_path(@current_user.id), id:"account-setting" %></li>
+        <li><%= link_to t('common.sign-out'), session_path(@current_user.id), method: :delete, id:"sign-out" %></li>
+        <% if @current_user.admin? %>
+          <li><%= link_to t('common.user_index'), admin_users_path, id:"add-user" %></li>
+          <li><%= link_to t('common.add-user'), new_admin_user_path, id:"add-user" %></li>
+        <% end %>
+      <% else %>
+        <li><%= link_to t('common.sign-up'), new_user_path, id:"sign-up" %></li>
+        <li><%= link_to t('common.sign-in'), new_session_path, id:"sign-in" %></li>
+      <% end %>
     </ul>
   </nav>
 
   <body>
+    <p><%= notice %></p>
     <%= yield %>
   </body>
 </html>

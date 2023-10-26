@@ -16,4 +16,7 @@ class Task < ApplicationRecord
         search_title(search[:title])
             .search_status(search[:status])
     end
+
+    # usrsテーブルとのアソシエーション
+    belongs_to :user
 end

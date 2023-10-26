@@ -1,0 +1,17 @@
+<h1><%= t('.title') %></h1>
+
+<%= form_with(scope: :session, url: sessions_path, loval: true) do |f| %>
+    <div class="field">
+        <%= f.label :email, t('activerecord.attributes.user.email') %>
+        <%= f.email_field :email %>
+    </div>
+
+    <div class="field">
+        <%= f.label :password, t('activerecord.attributes.user.password') %>
+        <%= f.password_field :password %>
+    </div>
+
+    <div class="actions">
+        <%= f.submit "ログイン", id:"create-session"  %>
+    </div>
+<% end %>
