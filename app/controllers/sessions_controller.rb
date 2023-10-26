@@ -16,8 +16,8 @@ class SessionsController < ApplicationController
             log_in(user)
             redirect_to tasks_path, notice: t('.success')
         else
-            flash.now[:notice] = t('.fail')
-            render :new
+            flash[:notice] = t('.fail')
+            redirect_to new_session_path
         end
     end
 

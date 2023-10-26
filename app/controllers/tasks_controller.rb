@@ -1,6 +1,7 @@
 class TasksController < ApplicationController
   before_action :set_task, only: %i[ show edit update destroy ]
 
+
   # GET /tasks or /tasks.json
   def index
     # 作成日の降順で全件表示
@@ -92,4 +93,5 @@ class TasksController < ApplicationController
     def task_params
       params.require(:task).permit(:title, :content, :deadline_on, :priority, :status)
     end
-end
+
+ end

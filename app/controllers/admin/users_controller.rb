@@ -38,6 +38,9 @@ class Admin::UsersController < ApplicationController
     def destroy
         if @user.destroy
             redirect_to admin_users_path
+        else
+            @users = User.all.page(params[:page])
+            render :index
         end
     end
 

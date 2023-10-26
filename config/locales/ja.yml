@@ -41,8 +41,8 @@ ja:
     account-setting: アカウント設定
     sign-in: ログイン
     sign-out: ログアウト
-    user_index: ユーザー一覧
-    add-user: ユーザーを登録する
+    users-index: ユーザー一覧
+    add-user: ユーザを登録する
     destroy: 削除
     back: 戻る
     confirm_destroy: 本当に削除してもよろしいですか？
@@ -82,13 +82,13 @@ ja:
   admin:
     users:
       index:
-        title: ユーザー一覧ページ
+        title: ユーザ一覧ページ
       new:
-        title: ユーザー登録ページ
+        title: ユーザ登録ページ
       show:
-        title: ユーザー詳細ページ
+        title: ユーザ詳細ページ
       edit:
-        title: ユーザー編集ページ
+        title: ユーザ編集ページ
 
     
 
