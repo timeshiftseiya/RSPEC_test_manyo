@@ -32,6 +32,7 @@ ja:
     successful_task: タスクを%{action}しました
     successful_user: アカウントを%{action}しました
     fail_login: メールアドレスまたはパスワードに誤りがあります
+    correct_user: アクセス権限がありません
   common:
     index: タスク一覧
     new: タスクを登録する
@@ -41,7 +42,7 @@ ja:
     account-setting: アカウント設定
     sign-in: ログイン
     sign-out: ログアウト
-    users-index: ユーザー一覧
+    users-index: ユーザ一覧
     add-user: ユーザを登録する
     destroy: 削除
     back: 戻る

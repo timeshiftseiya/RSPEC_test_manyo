@@ -6,8 +6,6 @@ class UsersController < ApplicationController
     skip_before_action :login_required, only:[:new,:create]
     # ログアウトの必要があるアクションを定義
     before_action :logout_required, only:[:new,:create]
-    # ユーザー詳細画面（showアクション）が本人しか閲覧できないように制御
-    before_action :correct_user, only:[:show]
 
     def new
         @user = User.new
@@ -54,13 +52,4 @@ class UsersController < ApplicationController
         params.require(:user).permit(:name, :email, :password, :password_confirmation)
     end
 
-    # 誰の詳細画面かを特定するため、showアクション実行前にuserのidを取得し、userインスタンスに格納
-    # userインスタンスを引数としてsession_helperに定義したcorrect_user?メソッドを実行し、参照している詳細画面がログインユーザーの詳細画面かを判断する
-    # 判断した結果、
-    # 　TRUE:ログインユーザーの詳細画面ならそのままshowアクションを実行し、詳細画面を表示
-    # 　FALSE:current_userでログインユーザーのユーザー情報を改めて取り直した上、showアクションを実行し、その人の詳細画面を表示
-    def correct_user
-        @user = User.find(params[:id])
-        redirect_to current_user unless correct_user?(@user)
-    end
 end

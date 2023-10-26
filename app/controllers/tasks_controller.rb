@@ -1,6 +1,6 @@
 class TasksController < ApplicationController
   before_action :set_task, only: %i[ show edit update destroy ]
-  before_action :correct_user, only:[:show]
+  before_action :correct_user, only:[:show, :edit]
 
 
   # GET /tasks or /tasks.json
@@ -98,7 +98,7 @@ class TasksController < ApplicationController
     def correct_user
       task = Task.find(params[:id])
       @user = task.user_id
-      redirect_to tasks_path unless correct_user?(@user)
+      redirect_to tasks_path, notice: t('notice.correct_user') unless correct_user?(@user)
     end
 
  end
