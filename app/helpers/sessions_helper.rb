@@ -18,7 +18,7 @@ module SessionsHelper
 
     # （本人しかユーザー詳細画面にアクセスできないようにするため）ログインユーザーとユーザー詳細画面を閲覧しに来たユーザーが一致するかを判断する（Trueかfalseを返す）
     def correct_user?(user)
-        user == current_user
+        user == current_user.id
     end
 
 end
