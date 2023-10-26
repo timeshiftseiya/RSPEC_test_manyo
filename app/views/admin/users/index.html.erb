@@ -1,5 +1,25 @@
 <h1><%= t('.title') %></h1>
 
+<% if @user.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@user.errors.count, "error") %> prohibited this <%= @user.name %> from being saved:</h2>
+    <ul>
+    <% @user.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<% if @user.errors.present? %>
+  <ul id='error_explanation'>
+    <% @user.errors.full_messages.each do |message| %>
+      <li><%= message%></li>
+    <% end %>
+  </ul>
+<% end %>
+
+
 <table>
   <thead>
     <tr>
@@ -20,6 +40,7 @@
         <td><%= Task.where(user_id: user.id).count  %></td>
         <td><%= link_to t('common.show'), admin_user_path(user.id), class:"show-user" %></td>
         <td><%= link_to t('common.edit'), edit_admin_user_path(user.id), class:"edit-user" %></td>
+        <td><% user.errors.messages %></td>
         <td><%= link_to t('common.destroy'), admin_user_path(user.id), method: :delete, data: { confirm: t('common.confirm_destroy') }, class:"destroy-user" %></td>
       </tr>
     <% end %>
