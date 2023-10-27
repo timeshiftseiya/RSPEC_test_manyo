@@ -18,7 +18,7 @@ class User < ApplicationRecord
 
     # 管理者が一人しかいない状態でそのユーザを削除しようとした場合に削除できないよう制御
     before_destroy do
-        if User.where(admin: true).count == 1
+        if User.where(admin: true).count == 1 && self.admin == true
             self.errors.add(:base, '管理者が0人になるため権限を削除できません')
             throw :abort
         end

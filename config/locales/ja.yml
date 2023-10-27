@@ -31,6 +31,7 @@ ja:
   notice:
     successful_task: タスクを%{action}しました
     successful_user: アカウントを%{action}しました
+    successful_admin_user: ユーザを%{action}しました
     fail_login: メールアドレスまたはパスワードに誤りがあります
     correct_user: アクセス権限がありません
   common:
