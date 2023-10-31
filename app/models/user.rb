@@ -19,7 +19,7 @@ class User < ApplicationRecord
     # 管理者が一人しかいない状態でそのユーザを削除しようとした場合に削除できないよう制御
     before_destroy do
         if User.where(admin: true).count == 1 && self.admin == true
-            self.errors.add(:base, '管理者が0人になるため権限を削除できません')
+            self.errors.add(:base, '管理者が0人になるため削除できません')
             throw :abort
         end
     end
@@ -27,7 +27,7 @@ class User < ApplicationRecord
     # 管理者が一人しかいない状態でそのユーザから管理者権限を外す更新をしようとした場合に更新できないよう制御
     before_update do
         if User.where(admin: true).count == 1 && self.will_save_change_to_attribute?("admin",from: true, to: false)
-            self.errors.add(:base, '管理者が0人になるため権限を変更できません') 
+            self.errors.add(:base, '管理者が0人になるため権限を変更できません')
             throw :abort
         end
     end
